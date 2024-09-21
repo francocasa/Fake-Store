@@ -6,6 +6,14 @@ body{
   background-color: white;
 }
 
+hr{
+  border: black 1px solid;
+}
+
+.title{
+  text-align: center;
+}
+
 #listado{
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
@@ -34,7 +42,7 @@ body{
 }
 
 .card__image img {
-  width: 50% ;
+  width: 40% ;
   height: auto;
   border-radius: 8px;
 }
