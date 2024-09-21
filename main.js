@@ -18,6 +18,7 @@ function createCard(title, image) {
   div__card.className = "card";
   /* Imagen */
   const div__imagen_producto = document.createElement("div");
+  div__imagen_producto.className = "card__image";
   const imagen = document.createElement("img");
   imagen.src = image;
   div__imagen_producto.appendChild(imagen);
@@ -28,10 +29,12 @@ function createCard(title, image) {
   div__descripcion_producto.appendChild(descripcion);
   /* Oferta */
   const div__oferta_producto = document.createElement("div");
+  div__oferta_producto.className = "card__offer"
   const temporizador = document.createElement("h3");
-  temporizador.innerHTML = "temporizador";
+  temporizador.innerHTML = "00:00:00";
   const boton = document.createElement("button");
-  boton.innerHTML = "boton";
+  boton.className = "card__button";
+  boton.innerHTML = "Go To Detail";
   div__oferta_producto.appendChild(temporizador);
   div__oferta_producto.appendChild(boton);
   /* Agregar divs */

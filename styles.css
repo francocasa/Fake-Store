@@ -1,10 +1,46 @@
+body{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: white;
+}
+
 .card{
   border: 2px solid gray;
   border-radius: 10px;
   padding: 15px;
   width: 100vw;
   max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-img{
-  width: 100px;
+
+.card__image {
+  text-align: center;
 }
+
+.card__image img {
+  width: 50% ;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card__offer {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.card__button {
+  background-color: #2486d2;
+  color: white;
+  border: black 1.5px solid;
+  padding: 0px 5px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+
