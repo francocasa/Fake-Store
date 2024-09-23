@@ -30,6 +30,7 @@ En este proyecto, los usuarios deben poder:
 ### Captura de pantalla
 
 #### Desktop
+![image](https://github.com/user-attachments/assets/9c13865c-fa14-471c-9267-7598a5c08ef7)
 
 
 
