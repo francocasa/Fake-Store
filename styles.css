@@ -15,12 +15,14 @@ hr{
 }
 
 #listado{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
+  display: flex;
+  flex-wrap: wrap;
+  /*grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
   gap: 25px; /* Espacio entre los elementos */
   padding: 0;
   margin: 0;
   list-style-type: none;
+  justify-content: space-around;
 }
 
 .card{
@@ -30,6 +32,7 @@ hr{
 
   width: 100vw;
   max-width: 350px;
+  min-width: 250px;
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -69,4 +72,8 @@ h3{
   justify-content: end;
 }
 
-
+button:disabled
+{
+  cursor: not-allowed;
+  background-color: rgb(229, 229, 229) !important;
+}

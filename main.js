@@ -29,31 +29,58 @@ function createCard(title, image) {
   div__descripcion_producto.appendChild(descripcion);
   /* Oferta */
   const div__oferta_producto = document.createElement("div");
-  div__oferta_producto.className = "card__offer"
+  div__oferta_producto.className = "card__offer";
   const temporizador = document.createElement("h3");
-  temporizador.innerHTML = "00:00:00";
   const boton = document.createElement("button");
   boton.className = "card__button";
   boton.innerHTML = "Go To Detail";
+  const tipo_tiempo = Math.floor(Math.random() * 3) + 1;
+  const tiempo = elegirTiempo(tipo_tiempo);
+  const timer = setInterval(() => {
+    mostrarTiempoTranscurrido(Math.floor(tiempo - Date.now()), temporizador);
+    if (Date.now() > tiempo - 1000) {
+      boton.disabled = true;
+      clearInterval(timer);
+    }
+  }, 1000);
   div__oferta_producto.appendChild(temporizador);
   div__oferta_producto.appendChild(boton);
   /* Agregar divs */
   div__card.appendChild(div__imagen_producto);
   div__card.appendChild(div__descripcion_producto);
   div__card.appendChild(div__oferta_producto);
-
   return div__card;
 }
 
-const oferta_1min = Date.now() + 60 * 1000; //Aqui tomamos el tiempo de cuando queremos que el contador termine (En 60 segundos a partir de ahora)
-
-function mostrarTiempoTranscurrido() {
-  const tiempoTranscurrido = Math.floor((oferta_1min - Date.now()) / 1000);
-  if (tiempoTranscurrido > 0) {
-    console.log(`Han transcurrido ${tiempoTranscurrido} segundos`);
-    //Programamos para que se revise de nuevo el tiempo transcurrido en 500ms
-    setTimeout(mostrarTiempoTranscurrido, 1000);
-  } //else: Sino no programamos nada, es como si detuvieramos el timer
+function elegirTiempo(tipo_tiempo) {
+  let tiempo = 0;
+  if (tipo_tiempo == 1) {
+    tiempo = Date.now() + 60 * 1000;
+  } else if (tipo_tiempo == 2) {
+    tiempo = Date.now() + 3 * 60 * 1000;
+  } else {
+    tiempo = Date.now() + 60 * 60 * 1000 * Math.random();
+  }
+  return tiempo;
 }
 
-setTimeout(mostrarTiempoTranscurrido, 1000); //Mostramos el tiempo transcurrido (en este caso por consola, pero podría ser en cualquier lado)
+function mostrarTiempoTranscurrido(tiempo_restante, temporizador) {
+  let seconds = Math.floor(tiempo_restante / 1000);
+  let minutes = Math.floor(seconds / 60);
+  let hours = Math.floor(minutes / 60);
+
+  seconds = seconds % 60;
+  minutes = minutes % 60;
+  hours = hours % 24;
+
+  seconds = padToTwoDigits(seconds);
+  minutes = padToTwoDigits(minutes);
+  hours = padToTwoDigits(hours);
+  if (tiempo_restante > 0) {
+    temporizador.innerHTML = `${hours}:${minutes}:${seconds}`;
+  }
+}
+
+const padToTwoDigits = (num) => {
+  return num.toString().padStart(2, "0");
+};
